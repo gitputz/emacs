@@ -477,7 +477,14 @@
 ;;;;
 ;;;;(Note: to install Ubuntu Nerd Fonts, download them from https://www.nerdfonts.com/font-downloads)
 ;;;;
-;;;;Next, extract the downloaded zip file using unzip JetBrainsMono.zip
+;;;;Next, extract the downloaded zip file 
+;;;;Next, extract the downloaded zip file 
+;;
+;; On Windows?
+;; For Jetbrainsmono, Select all font files in the folder, right-click any of them, then pick Install from the menu.
+;;
+;; On Linux?
+;; using unzip JetBrainsMono.zip
 ;;;;
 ;;;;Then, move the font files to the system font directory with sudo mv JetBrainsMono/* /usr/share/fonts/
 ;;;;
