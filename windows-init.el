@@ -1,14 +1,6 @@
-;; Emacs configuration for MS Windows
-
-;; Don't use this on linux as the Paths have been Windows-ified
-
-;; Configuration migrated from initial linux installation
 
 ;;;;Config from gitlab.com/Clsmith1
-
-;; Set directories and load paths
-(setq default-directory "C:/Users/user/Emacs/")
-(setq load-path (cons "C:/User/user/Emacs/.emacs.d/Packages/" load-path))
+;;
 
 ;; Install straight.el
 (defvar bootstrap-version)
@@ -28,11 +20,15 @@
 
 (setq backup-directory-alist '((".*" . "~/.local/share/Trash/files")))
 
+;; Default folder 
+(setq default-directory "C:/Users/user/Emacs")
+
+
 (use-package beacon)
 
 (use-package doom-themes)
 
- (use-package focus)
+(use-package focus)
 
 (use-package magit)
 
@@ -143,6 +139,16 @@
   :straight t
   :init (doom-modeline-mode 1))
 
+;; To display iconc, nerd-icons are necessary. Run M-x nerd-icons-install-fonts. On MS Windows, these fonts must then be installed manually. Do this by right-clicking the mouse and choosing the install option.   
+
+(use-package nerd-icons
+  ;; :custom
+  ;; The Nerd Font you want to use in GUI
+  ;; "Symbols Nerd Font Mono" is the default and is recommended
+  ;; but you can use any other Nerd Font if you want
+  ;; (nerd-icons-font-family "Symbols Nerd Font Mono")
+  )
+
 (use-package all-the-icons
       :if (display-graphic-p))
 
@@ -178,14 +184,6 @@
 
 (use-package org-tempo
  :straight nil)
- (require 'org-tempo)
-
-(use-package orderless
-  :straight t
-  :custom
-  (completion-styles '(orderless basic))
-  (completion-category-overrides '((file (styles basic partial-completion)))))
-
 
 ;;install vertico
 (use-package vertico
@@ -309,7 +307,7 @@
    :init
  (setq dashboard-set-heading-icons t)
  (setq dashboard-set-file-icons t)
- (setq dashboard-banner-logo-title "Emacs. You cured my Autism.")
+ (setq dashboard-banner-logo-title "You can learn Emacs in a day. Everyday")
  (setq dashboard-startup-banner 'logo)
  (setq dashboard-center-content nil)
  (setq dashboard-items '((recents . 5)
@@ -477,29 +475,31 @@
 ;;;;
 ;;;;(Note: to install Ubuntu Nerd Fonts, download them from https://www.nerdfonts.com/font-downloads)
 ;;;;
-;;;;Next, extract the downloaded zip file 
-;;;;Next, extract the downloaded zip file 
-;;
-;; On Windows?
-;; For Jetbrainsmono, Select all font files in the folder, right-click any of them, then pick Install from the menu.
-;;
-;; On Linux?
-;; using unzip JetBrainsMono.zip
+;;;;Next, extract the downloaded zip file using unzip JetBrainsMono.zip
 ;;;;
 ;;;;Then, move the font files to the system font directory with sudo mv JetBrainsMono/* /usr/share/fonts/
 ;;;;
 ;;;;Finally, for the font to be available, update the font cache with sudo fc-cache -f -v
 
-;; Fonts. Hmm...
 
+;; -----------------------------------------------------------
+;; Integrating fonts into Emacs on Windows
+
+;; Emacs Elements advises correctly
+(set-frame-font "JetBrains Mono" nil t)
+
+;; ***********NOTHING in the font section below works on MS Windows!***********
+;; Location of Fonts installed on the Windows system
+;;(add-to-list 'bdf-directory-list "C:/Users/user/Fonts/Jet_Brains_Mono/fonts/ttf")
+;;
 ;;(set-face-attribute 'default nil 
 ;;  :font "JetBrainsMono Nerd Font"
 ;;  :height 120
 ;;  :weight 'bold)
-;;(set-face-attribute 'variable-pitch nil 
-;;  :font "Ubuntu Nerd Font"
-;;  :height 120
-;;  :weight 'semibold)
+;;;;(set-face-attribute 'variable-pitch nil 
+;;;;  :font "Ubuntu Nerd Font"
+;;;;  :height 120
+;;;;  :weight 'semibold)
 ;;(set-face-attribute 'fixed-pitch nil
 ;;  :font "JetBrainsMono Nerd Font"
 ;;  :height 120
@@ -571,7 +571,7 @@
 ;;    "h f" '(describe-function :wk "Describe function")
 ;;    "h v" '(describe-variable :wk "Describe variable")
 ;;    "h r r" '((lambda () (interactive)
-;;                (load-file "C:/Users/user/Emacs/.emacs.d/init.el")
+;;                (load-file "~/.emacs.d/init.el")
 ;;                (ignore (elpaca-process-queues)))
 ;;              :wk "Reload emacs config"))
 ;;
@@ -603,7 +603,7 @@
     "h m" '(describe-mode :wk "Describe mode")
     "h r" '(:ignore t :wk "Reload")
     "h r r" '((lambda () (interactive)
-                (load-file "C:/Users/user/Emacs/.emacs.d/init.el")
+                (load-file "~/.emacs.d/init.el")
                 (ignore (elpaca-process-queues)))
               :wk "Reload emacs config")
     "h t" '(load-theme :wk "Load theme")
@@ -651,10 +651,7 @@
     (lee/leader-keys
     "d"   '(:ignore t :wk "Dired")
     "d d" '(dired :wk "Open Dired")
-    "d f" '(wdired-finish-edit :wk "Writable dired finish edit")
-    "d j" '(dired-jump :wk "Dired jump to current")
-    "d w" '(wdired-change-to-wdired-mode :wk "Writable dired"))
-
+    "d j" '(dired-jump :wk "Dired jump to current"))
 
 
 ;; Keybindings re Files etc
@@ -665,15 +662,15 @@
   ;; (dt/leader-keys
     "f" '(:ignore t :wk "Files")    
     ;; "f c" '((lambda () (interactive)
-              ;; (find-file "C:/Users/user/Emacs/.emacs.d/config.org")) 
+              ;; (find-file "~/.emacs.d/config.org")) 
             ;; :wk "Open emacs config.org")
     "f e" '((lambda () (interactive)
-              (dired "C:/Users/user/Emacs/.emacs.d/")) 
+              (dired "~/.emacs.d/")) 
             :wk "Open user-emacs-directory in dired")
     "f d" '(find-grep-dired :wk "Search for string in files in DIR")
     ;; "f g" '(counsel-grep-or-swiper :wk "Search for string current file")
     "f i" '((lambda () (interactive)
-              (find-file "C:/Users/user/Emacs/.emacs.d/init.el")) 
+              (find-file "~/.emacs.d/init.el")) 
             :wk "Open emacs init.el")
     ;; "f j" '(counsel-file-jump :wk "Jump to a file below current directory")
     ;; "f l" '(counsel-locate :wk "Locate a file")
@@ -700,16 +697,3 @@
 
 
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(org-agenda-files nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
- 
