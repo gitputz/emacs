@@ -24,6 +24,31 @@
 (setq default-directory "C:/Users/user/Emacs")
 
 
+;; Saving Customizations
+
+;; Specifying different customization files for different Emacs versions:
+
+;;     (cond ((< emacs-major-version 29)
+;;           ((and (= emacs-minor-version 3))
+;;            (setq custom-file "C/Users/user/Emacs/.emacs.d/.emacs-29-custom.el"))
+	   
+	   ;; Examples from the manual
+	   ;; Emacs [version number] customization.
+;;           ((and (= emacs-major-version 26)
+;;                 (< emacs-minor-version 3))
+;;            ;; Emacs 26 customization, before version 26.3.
+;;            (setq custom-file "~/.config/custom-26.el"))
+;;           (t
+;;            ;; Emacs version 28.1 or later.
+;;            (setq custom-file "~/.config/emacs-custom.el")))
+
+     ;;(load custom-file)
+
+     (setq custom-file "C:/Users/user/Emacs/.emacs.d/.emacs-custom.el")
+     (load custom-file)
+
+
+
 (use-package beacon)
 
 (use-package doom-themes)
