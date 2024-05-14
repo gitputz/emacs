@@ -9,6 +9,41 @@
   (keymap-global-set "C-c k" 'clipboard-kill-ring-save)
   (keymap-global-set "C-c y" 'clipboard-yank)
 
+;; Does work
+    ;; Move Windows
+    "w H" '(evil-window-move-far-left :wk "Buffer move left")
+    "w J" '(evil-window-move-very-bottom :wk "Buffer move down")
+    "w K" '(evil-window-move-very-top :wk "Buffer move up")
+    "w L" '(evil-window-move-far-right :wk "Buffer move right"))
+
+
+
+;; ***********NOTHING in the font section below works on MS Windows!***********
+;; Location of Fonts installed on the Windows system
+;;(add-to-list 'bdf-directory-list "C:/Users/user/Fonts/Jet_Brains_Mono/fonts/ttf")
+;;
+;;(set-face-attribute 'default nil 
+;;  :font "JetBrains Mono"
+;;  :height 120
+;;  :weight 'bold)
+;;;;(set-face-attribute 'variable-pitch nil 
+;;;;  :font "Ubuntu Nerd Font"
+;;;;  :height 120
+;;;;  :weight 'semibold)
+;;(set-face-attribute 'fixed-pitch nil
+;;  :font "JetBrains Mono"
+;;  :height 120
+;;  :weight 'bold)
+;;;; Makes commented text and keywords italics.
+;;;; This is working in emacsclient but not emacs.
+;;;; Your font must have an italic face available.
+
+
+(set-face-attribute 'font-lock-comment-face nil
+ :slant 'italic)
+(set-face-attribute 'font-lock-keyword-face nil
+ :slant 'italic)
+
 
 ;; File Management Configuration
 ;; System Crafters from Scratchpad
