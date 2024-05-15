@@ -682,7 +682,7 @@
 ;; Keybindings re Files etc
     (lee/leader-keys
     ;; "f"   '(:ignore t :wk "Files")
-    "f c" '((lambda () (interactive) (find-file "~/.emacs./init.el")) :wk "Open emacs config")
+    "f c" '((lambda () (interactive) (find-file "~/.emacs.d/init.el")) :wk "Open emacs config")
     ;; "f d" '(find-grep-dired :wk "Search for strings in files in DIR"))
   ;; (dt/leader-keys
     "f" '(:ignore t :wk "Files")    
