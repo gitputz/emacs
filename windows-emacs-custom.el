@@ -202,7 +202,7 @@
     "w L" '(evil-window-move-far-right :wk "Buffer move right"))
 
 
-;; Shell Mode on MS Windows
+;; Powershell as your shell within Emacs on MS Windows
 ;; Not a terminal emulator. For that functionality use eshell
 ;; M-x shell
 
