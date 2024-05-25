@@ -511,7 +511,7 @@
 ;; Integrating fonts into Emacs on Windows
 
 ;; Emacs Elements advises correctly
-(set-frame-font "JetBrains Mono" nil t)
+(set-frame-font "JetBrainsMono Nerd Font" nil t)
 
 ;; ***********NOTHING in the font section below works on MS Windows!***********
 ;; Location of Fonts installed on the Windows system
